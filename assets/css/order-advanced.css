@@ -1,0 +1,332 @@
+/* ===== ORDER PAGE ADVANCED STYLES ===== */
+/* Styles avancés pour une meilleure UX et design moderne */
+
+/* Animations supplémentaires */
+@keyframes shimmer {
+    0% { background-position: -1000px 0; }
+    100% { background-position: 1000px 0; }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideFromRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Item animations au chargement */
+.order-item {
+    animation: slideFromLeft 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.order-item:nth-child(1) { animation-delay: 0.1s; }
+.order-item:nth-child(2) { animation-delay: 0.2s; }
+.order-item:nth-child(3) { animation-delay: 0.3s; }
+.order-item:nth-child(4) { animation-delay: 0.4s; }
+
+/* Product card hover effect amélioré */
+.product-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.product-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: right 0.5s ease;
+    z-index: 10;
+}
+
+.product-card:hover::before {
+    right: 100%;
+}
+
+/* Hover effect au clic des boutons */
+.add-to-cart {
+    position: relative;
+    overflow: hidden;
+}
+
+.add-to-cart::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.5);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+    pointer-events: none;
+}
+
+.add-to-cart:active::after {
+    width: 300px;
+    height: 300px;
+}
+
+/* Free shipping banner animation */
+.free-shipping-banner {
+    position: relative;
+    overflow: hidden;
+    animation: fadeInScale 0.6s ease-out;
+}
+
+.free-shipping-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: shimmer 2s infinite;
+}
+
+.free-shipping-banner > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Form input focus animation améliorée */
+.form-control:focus {
+    animation: fadeInScale 0.3s ease-out;
+}
+
+/* Badges et highlights */
+.form-label span {
+    animation: fadeInScale 0.5s ease-out;
+}
+
+/* Product price highlight */
+.price {
+    position: relative;
+    display: inline-block;
+}
+
+.price::before {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--primary-gradient);
+    transition: width 0.3s ease;
+}
+
+.product-card:hover .price::before {
+    width: 100%;
+}
+
+/* Order summary badges */
+.order-item-subtotal {
+    animation: fadeInScale 0.4s ease-out;
+    position: relative;
+}
+
+.order-item-subtotal::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius-full);
+    border: 2px solid var(--primary);
+    opacity: 0;
+    animation: pingEffect 2s infinite;
+}
+
+@keyframes pingEffect {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    75% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Smooth transitions for totals */
+#subtotalAmount, #deliveryAmount, #totalAmount {
+    transition: all 0.3s ease;
+    display: inline-block;
+    min-width: 100px;
+}
+
+/* Total row highlight effect */
+.order-total-row.total {
+    position: relative;
+    overflow: hidden;
+}
+
+.order-total-row.total::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(46,139,87,0.1), transparent);
+    animation: shimmer 3s infinite;
+    opacity: 0;
+}
+
+.order-total-row.total:hover::before {
+    opacity: 1;
+}
+
+/* Button group animation */
+.form-actions .btn {
+    animation: slideInUp 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+.form-actions .btn:nth-child(1) { animation-delay: 0.7s; }
+.form-actions .btn:nth-child(2) { animation-delay: 0.8s; }
+
+/* Success state animation (for future use) */
+.form-group.success .form-control {
+    border-color: #4CAF50;
+    background: rgba(76, 175, 80, 0.05);
+    animation: fadeInScale 0.3s ease-out;
+}
+
+/* Error state animation (for future use) */
+.form-group.error .form-control {
+    border-color: #FF5252;
+    background: rgba(255, 82, 82, 0.05);
+    animation: shakeError 0.3s ease-out;
+}
+
+@keyframes shakeError {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Suggested products section animations */
+.suggested-section .product-card {
+    animation: slideFromRight 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+.suggested-section .product-card:nth-child(1) { animation-delay: 0.1s; }
+.suggested-section .product-card:nth-child(2) { animation-delay: 0.2s; }
+.suggested-section .product-card:nth-child(3) { animation-delay: 0.3s; }
+.suggested-section .product-card:nth-child(4) { animation-delay: 0.4s; }
+.suggested-section .product-card:nth-child(5) { animation-delay: 0.5s; }
+.suggested-section .product-card:nth-child(6) { animation-delay: 0.6s; }
+.suggested-section .product-card:nth-child(7) { animation-delay: 0.7s; }
+.suggested-section .product-card:nth-child(8) { animation-delay: 0.8s; }
+
+/* Scrollbar styling pour scrollable containers */
+.order-items-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.order-items-container::-webkit-scrollbar-track {
+    background: var(--bg-light);
+    border-radius: var(--radius-full);
+}
+
+.order-items-container::-webkit-scrollbar-thumb {
+    background: var(--primary-light);
+    border-radius: var(--radius-full);
+    transition: background 0.3s ease;
+}
+
+.order-items-container::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}
+
+/* Firefox scrollbar */
+.order-items-container {
+    scrollbar-color: var(--primary-light) var(--bg-light);
+    scrollbar-width: thin;
+}
+
+/* Loading state animation */
+@keyframes loadingPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+}
+
+.loading {
+    animation: loadingPulse 1.5s ease-in-out infinite;
+}
+
+/* ========================================
+   🔗 All Responsive styles are managed in: responsive.css
+   ========================================
+   
+   Do NOT add media queries here!
+   responsive.css handles all breakpoints:
+   - 1400px (Large Desktop)
+   - 1200px (Desktop)
+   - 992px (Tablet Landscape)
+   - 768px (Tablet Portrait)
+   - 576px (Mobile Landscape)
+   - 480px (Mobile)
+   - 375px (Extra Small)
+*/
+
+/* Accessible focus states */
+.form-control:focus-visible,
+.btn:focus-visible,
+.add-to-cart:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Print styles */
+@media print {
+    .order-hero {
+        display: none;
+    }
+    
+    .order-form-card {
+        page-break-inside: avoid;
+    }
+    
+    .suggested-section {
+        display: none;
+    }
+}
+

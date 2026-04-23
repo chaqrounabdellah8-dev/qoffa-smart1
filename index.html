@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qoffa Smart - توصيل المنتجات الطازجة مباشرة إلى منزلك</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/reorder-popup.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Image Optimizer -->
+    <script src="assets/js/image-optimizer.js"></script>
+</head>
+<body>
+    <!-- 🔝 شريط التنقل المتطور -->
+    <header id="mainHeader">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="assets/images/logo.png" alt="Qoffa Smart" class="logo-img">
+                    <span class="logo-text">Qoffa Smart</span>
+                </a>
+                
+                <ul class="nav-menu" id="navMenu">
+                    <li><a href="index.html" class="nav-link active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                    <li><a href="products.html" class="nav-link"><i class="fas fa-store"></i> المنتجات</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                    <li><a href="contact.html" class="nav-link"><i class="fas fa-phone-alt"></i> اتصل بنا</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <button class="cart-btn" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </button>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 🎯 Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge animate__animated animate__fadeInDown">جديد 🎉 توصيل مجاني للطلبات فوق 150 درهم</span>
+                <h1 class="hero-title animate__animated animate__fadeInDown">نوصل طلباتك باحترافية في الدار البيضاء</h1>
+                <p class="hero-subtitle animate__animated animate__fadeInUp animate__delay-1s">
+                    نستقبل طلباتكم اليوم ونقوم بتسليمها في اليوم الموالي بتنظيم والتزام كامل
+                </p>
+                <div class="hero-highlight animate__animated animate__fadeIn animate__delay-2s">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>اطلب عبر واتساب: <strong>+212668-676565</strong></span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="products.html" class="btn btn-primary btn-large animate__animated animate__fadeInLeft animate__delay-3s" style="background: linear-gradient(135deg, #ff416c, #ff4b2b); color: white; font-size: 1.2rem; padding: 15px 40px; border-radius: 50px; box-shadow: 0 10px 25px rgba(255, 65, 108, 0.4);">
+                        <i class="fas fa-shopping-basket"></i> ابدأ التسوق الآن
+                    </a>
+                    <a href="#how-it-works" class="btn btn-outline btn-large animate__animated animate__fadeInRight animate__delay-3s" style="border: 2px solid #ff416c; color: #ff416c; font-size: 1.2rem; padding: 15px 40px; border-radius: 50px;">
+                        <i class="fas fa-play-circle"></i> كيف يعمل؟
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✨ المميزات الرئيسية -->
+    <section class="highlights-section">
+        <div class="container">
+            <div class="highlights-grid">
+                <div class="highlight-card animate__animated animate__slideInRight">
+                    <div class="highlight-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>توصيل مجاني للطلبات فوق 150 درهم</h3>
+                    <p>استمتع بتوصيل مجاني مباشرة إلى منزلك عند تجاوز حد الطلب الأدنى</p>
+                </div>
+                
+                <div class="highlight-card animate__animated animate__slideInUp" style="animation-delay: 0.2s;">
+                    <div class="highlight-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>منتجات عضوية طازجة يومياً</h3>
+                    <p>نختار أفضل المنتجات الطازجة كل يوم مباشرة من المزارع المحلية الموثوقة</p>
+                </div>
+                
+                <div class="highlight-card animate__animated animate__slideInLeft" style="animation-delay: 0.4s;">
+                    <div class="highlight-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>تسليم في اليوم الموالي</h3>
+                    <p>نستقبل طلباتكم اليوم ونقوم بتسليمها في اليوم الموالي بتنظيم والتزام كامل</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📍 مناطق التوصيل -->
+    <section class="delivery-section" id="delivery-areas">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">نوصل إلى أحيائك المختارة بالدار البيضاء</h2>
+                <p class="section-subtitle">خدمة توصيل سريعة وآمنة في أفضل أحياء الدار البيضاء</p>
+            </div>
+            
+            <div class="delivery-cities">
+                <div class="city-card animate__animated animate__fadeInUp">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>عين الشق</h3>
+                </div>
+                <div class="city-card animate__animated animate__fadeInUp animate__delay-1s">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>سيدي معروف</h3>
+                </div>
+                <div class="city-card animate__animated animate__fadeInUp animate__delay-2s">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>البرنوصي</h3>
+                </div>
+                <div class="city-card animate__animated animate__fadeInUp animate__delay-3s">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>سباتة</h3>
+                </div>
+            </div>
+            
+            <div class="delivery-info">
+                <p><i class="fas fa-clock"></i> وقت العمل: يومياً من 8 صباحاً إلى 10 مساءً</p>
+                <p><i class="fas fa-shipping-fast"></i> التوصيل مجاني للطلبات فوق 150 درهم</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🛒 كيفية الطلب -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">كيفية الطلب في 4 خطوات سهلة</h2>
+                <p class="section-subtitle">بدون تسجيل مسبق، بدون تعقيد</p>
+            </div>
+            
+            <div class="steps-container">
+                <div class="step-card animate__animated animate__fadeInUp">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-shopping-basket"></i>
+                    </div>
+                    <h3 class="step-title">اختر منتجاتك</h3>
+                    <p class="step-description">تصفح فئاتنا وأضف ما يناسبك إلى السلة</p>
+                </div>
+                
+                <div class="step-card animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-cart-plus"></i>
+                    </div>
+                    <h3 class="step-title">أكمل طلبك</h3>
+                    <p class="step-description">راجع سلة مشترياتك وأكمل المعلومات</p>
+                </div>
+                
+                <div class="step-card animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="step-title">أرسل عبر واتساب</h3>
+                    <p class="step-description">أرسل طلبك مباشرة عبر الرقم +212668-676565</p>
+                </div>
+                
+                <div class="step-card animate__animated animate__fadeInUp animate__delay-3s">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="step-title">استلم في منزلك</h3>
+                    <p class="step-description">ستصل منتجاتك طازجة إلى باب منزلك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🍎 المنتجات المميزة -->
+    <section class="featured-products" id="featured-products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">منتجاتنا المميزة</h2>
+                <p class="section-subtitle">أفضل المنتجات الطازجة التي يفضلها عملاؤنا</p>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- سيتم ملأ المنتجات من Baserow -->
+            </div>
+            
+            <div class="view-all">
+                <a href="products.html" class="btn btn-primary">
+                    <i class="fas fa-store"></i> عرض جميع المنتجات
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🥗 فئات المنتجات -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">تصفح حسب الفئة</h2>
+                <p class="section-subtitle">اختَر ما تحتاجه من بين فئاتنا المتنوعة</p>
+            </div>
+            
+            <div class="categories-grid">
+                <a href="products.html?category=fruits" class="category-card animate__animated animate__fadeInUp">
+                    <div class="category-image">
+                        <img src="https://images.weserv.nl/?url=images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&w=300&q=80&output=webp" alt="فواكه">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <i class="fas fa-apple-alt"></i>
+                        <h3>فواكه طازجة</h3>
+                        <p>موز، تفاح، برتقال، فراولة وأكثر</p>
+                        <span class="category-link">تصفح الفواكه <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                
+                <a href="products.html?category=vegetables" class="category-card animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="category-image">
+                        <img src="https://images.weserv.nl/?url=images.unsplash.com/photo-1597362925123-77861d3fbac7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&w=300&q=80&output=webp" alt="خضروات">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <i class="fas fa-carrot"></i>
+                        <h3>خضروات الموسم</h3>
+                        <p>طماطم، خيار، بطاطس، بصل وأكثر</p>
+                        <span class="category-link">تصفح الخضروات <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                
+                <a href="products.html?category=herbs" class="category-card animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="category-image">
+                        <img src="https://images.weserv.nl/?url=images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&w=300&q=80&output=webp" alt="أعشاب وسلطات">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <i class="fas fa-leaf"></i>
+                        <h3>أعشاب وسلطات</h3>
+                        <p>سبانخ، بقدونس، نعناع، خس وأكثر</p>
+                        <span class="category-link">تصفح الأعشاب <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+                
+                <a href="products.html?category=bundles" class="category-card animate__animated animate__fadeInUp animate__delay-3s">
+                    <div class="category-image">
+                        <img src="https://images.weserv.nl/?url=images.unsplash.com/photo-1556909114-f6e7ad7d3136?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&w=300&q=80&output=webp" alt="باقات جاهزة">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <i class="fas fa-gift"></i>
+                        <h3>باقات جاهزة</h3>
+                        <p>باقات متنوعة لجميع المناسبات</p>
+                        <span class="category-link">تصفح الباقات <i class="fas fa-arrow-left"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⭐ لماذا Qoffa Smart -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">لماذا تختار Qoffa Smart؟</h2>
+                <p class="section-subtitle">نقدم لك تجربة تسوق فريدة ومميزة</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card animate__animated animate__fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>منتجات طازجة 100%</h3>
+                    <p>نختار لكم أفضل المنتجات مباشرة من المزارع المحلية</p>
+                </div>
+                
+                <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="feature-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>توصيل سريع</h3>
+                    <p>طلباتكم تصل خلال ساعات معدودة مع خدمة توصيل ممتازة</p>
+                </div>
+                
+                <div class="feature-card animate__animated animate__fadeInUp animate__delay-2s">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>أسعار مناسبة</h3>
+                    <p>نقدم أفضل الأسعار مع عروض وتخفيضات مستمرة</p>
+                </div>
+                
+                <div class="feature-card animate__animated animate__fadeInUp animate__delay-3s">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>دعم مباشر</h3>
+                    <p>فريق دعم متاح عبر واتساب للرد على استفساراتكم</p>
+                </div>
+                
+                <div class="feature-card animate__animated animate__fadeInUp">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>بدون تسجيل</h3>
+                    <p>اطلب بسهولة بدون الحاجة لإنشاء حساب مسبق</p>
+                </div>
+                
+                <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s">
+                    <div class="feature-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>تغليف صديق للبيئة</h3>
+                    <p>نستخدم مواد تغليف قابلة للتحلل لحماية البيئة</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📞 اتصل بنا الآن -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>جاهز لطلب منتجاتك الطازجة؟</h2>
+                <p>تواصل معنا مباشرة عبر واتساب وسنكون سعداء بخدمتك</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/212668676565" class="btn btn-whatsapp btn-large" target="_blank">
+                        <i class="fab fa-whatsapp"></i> تواصل عبر واتساب
+                    </a>
+                    <a href="tel:+212668676565" class="btn btn-outline btn-large">
+                        <i class="fas fa-phone-alt"></i> اتصل بنا الآن
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 📱 Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="footer-logo">
+                        <img src="assets/images/logo.png" alt="Qoffa Smart">
+                        <h3>Qoffa Smart</h3>
+                    </a>
+                    <p class="footer-description">
+                        منصة ذكية لتوصيل الخضر والفواكه الطازجة محليًا. نقدم حلًا مبتكرًا يجمع بين جودة المنتجات وتكنولوجيا التوصيل الحديثة لراحتك ورضاك.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/212668676565" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>روابط سريعة</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-home"></i> الرئيسية</a></li>
+                        <li><a href="products.html"><i class="fas fa-store"></i> جميع المنتجات</a></li>
+                        <li><a href="about.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                        <li><a href="contact.html"><i class="fas fa-phone-alt"></i> اتصل بنا</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>فئات المنتجات</h4>
+                    <ul class="footer-links">
+                        <li><a href="products.html?category=fruits"><i class="fas fa-apple-alt"></i> فواكه طازجة</a></li>
+                        <li><a href="products.html?category=vegetables"><i class="fas fa-carrot"></i> خضروات الموسم</a></li>
+                        <li><a href="products.html?category=herbs"><i class="fas fa-leaf"></i> أعشاب وسلطات</a></li>
+                        <li><a href="products.html?category=bundles"><i class="fas fa-gift"></i> الباقات الجاهزة</a></li>
+                        <li><a href="#"><i class="fas fa-percent"></i> العروض الخاصة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>معلومات التواصل</h4>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone-alt"></i>
+                            <div>
+                                <a href="tel:+212668676565">+212668-676565</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <a href="https://wa.me/212668676565" target="_blank">واتساب: <span style="direction: ltr; unicode-bidi: embed;">+212668-676565</span></a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <a href="mailto:info@qoffasmart.ma">info@qoffasmart.ma</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>يومياً: 8:00 صباحاً - 10:00 مساءً</div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>الدار البيضاء، المملكة المغربية</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Qoffa Smart. جميع الحقوق محفوظة. | تصميم وتطوير بكل فخر واعتزاز</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- واتساب عائم -->
+    <a href="https://wa.me/212668676565" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- زر العودة للأعلى -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <!-- CART SIDEBAR -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h2 class="cart-title">
+                <i class="fas fa-shopping-cart"></i> 
+                سلة التسوق
+            </h2>
+            <div class="cart-header-actions">
+                <button class="cart-clear-btn" id="cartClearBtn" title="حذف جميع المنتجات من السلة">
+                    <span class="emoji">🗑️</span> 
+                    <span class="btn-text">حذف الكل</span>
+                </button>
+                <button class="cart-close" id="cartClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty" id="cartEmpty">
+                <i class="fas fa-shopping-cart fa-3x"></i>
+                <p>السلة فارغة</p>
+                <a href="products.html" class="btn btn-primary">تصفح المنتجات</a>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="price-indicator" id="priceIndicator">
+                <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                    <span class="price-icon">💰</span>
+                    <span class="price-text" id="sidebarPriceText">المجموع: 0.00 درهم</span>
+                </div>
+                <!-- Price Progress Bar -->
+                <div class="price-progress-container">
+                    <div class="price-progress-bar">
+                        <div class="price-progress-fill" id="priceProgressFill" style="width: 0%"></div>
+                    </div>
+                    <div class="price-progress-labels">
+                        <span class="price-current-label" id="priceCurrentText">0.00</span>
+                        <span class="price-target-label">150 درهم (الحد الأدنى)</span>
+                    </div>
+                </div>
+                <div class="price-min-msg" id="sidebarPriceMsg">
+                    <i class="fas fa-exclamation-triangle"></i> يجب أن يكون المجموع 150 درهم على الأقل لتأكيد الطلب
+                </div>
+            </div>
+            <button class="cart-checkout" id="cartCheckout">إتمام الطلب</button>
+        </div>
+    </div>
+
+    <!-- Toast Container للإشعارات -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <!-- Loader -->
+    <div class="loader" id="loader">
+        <div class="loader-logo">
+            <img src="assets/images/logo.png" alt="Qoffa Smart">
+        </div>
+        <div class="loader-spinner"></div>
+        <div class="loader-text">جاري التحميل...</div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // ==================== CONFIGURATION ====================
+        const BASEROW_TOKEN = 'OIEan8aAjLjoCoTXKO6Evd4cifbtqRf8';
+        const BASEROW_TABLE_ID = '882093';
+        const BASEROW_URL = `https://api.baserow.io/api/database/rows/table/${BASEROW_TABLE_ID}/?user_field_names=true&size=200`;
+
+        // ==================== IMAGE OPTIMIZATION ====================
+        function getOptimizedImage(url, options = {}) {
+            if (!url || url.includes('undefined') || url.includes('null')) {
+                return 'https://via.placeholder.com/300/2E8B57/ffffff?text=Qoffa';
+            }
+            if (url.includes('images.weserv.nl') || url.includes('assets/') || url.includes('placeholder')) {
+                return url;
+            }
+            const width = options.width || 300;
+            return `https://images.weserv.nl/?url=${encodeURIComponent(url)}&w=${width}&q=80&output=webp&l=9`;
+        }
+
+        function handleImageError(img) {
+            const name = img.alt || 'Qoffa';
+            img.src = `https://via.placeholder.com/300/2E8B57/ffffff?text=${encodeURIComponent(name.substring(0, 10))}`;
+            img.onerror = null;
+        }
+
+        // ==================== GLOBAL VARIABLES ====================
+        let allProducts = [];
+        let cart = JSON.parse(localStorage.getItem('qoffaCart')) || [];
+
+        // ==================== HELPER FUNCTIONS ====================
+        function showLoader(show = true) {
+            const loader = document.getElementById('loader');
+            if (loader) loader.classList.toggle('active', show);
+        }
+
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+            
+            // Remove previous toasts
+            document.querySelectorAll('.toast').forEach(t => t.remove());
+            
+            const toast = document.createElement('div');
+            toast.className = `toast ${type}`;
+            toast.innerHTML = `<span>${message}</span>`;
+            container.appendChild(toast);
+            setTimeout(() => toast.remove(), 3000);
+        }
+
+        // ==================== FETCH PRODUCTS ====================
+        async function fetchProducts() {
+            showLoader(true);
+            try {
+                console.log('🔄 جاري جلب المنتجات...');
+                const response = await fetch(BASEROW_URL, {
+                    headers: { 'Authorization': `Token ${BASEROW_TOKEN}` }
+                });
+                
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                
+                const data = await response.json();
+                console.log(`✅ تم جلب ${data.results.length} منتج`);
+                
+                allProducts = [];
+                
+                data.results.forEach(product => {
+                    if (!product.name) return;
+                    
+                    const imageUrl = product.product_image?.[0]?.url || null;
+                    
+                    const formattedProduct = {
+                        id: product.id,
+                        name: product.name || '',
+                        name_fr: product.name_fr || product.name || '',
+                        price: parseFloat(product.price) || 0,
+                        originalPrice: product.original_price ? parseFloat(product.original_price) : null,
+                        image: imageUrl ? getOptimizedImage(imageUrl, { width: 300 }) : 'https://via.placeholder.com/300/2E8B57/ffffff?text=Qoffa',
+                        imageOriginal: imageUrl,
+                        category: product.category || '',
+                        unit: product.unit || 'كجم'
+                    };
+                    
+                    allProducts.push(formattedProduct);
+                });
+                
+                renderFeaturedProducts();
+                updateCartCount();
+                
+            } catch (error) {
+                console.error('❌ خطأ:', error);
+                showToast('حدث خطأ في تحميل المنتجات', 'error');
+            } finally {
+                showLoader(false);
+            }
+        }
+
+        // ==================== RENDER FUNCTIONS ====================
+        function renderProductCard(product) {
+            const discount = product.originalPrice 
+                ? Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100) 
+                : 0;
+            
+            return `
+                <div class="product-card" onclick="window.location.href='product-detail.html?id=${product.id}'" style="cursor: pointer;">
+                    ${discount > 0 ? `<div class="discount-badge">-${discount}%</div>` : ''}
+                    <div class="product-image">
+                        <img src="${product.image}" 
+                             alt="${product.name_fr}" 
+                             loading="lazy"
+                             onerror="handleImageError(this)">
+                    </div>
+                    <div class="card-content">
+                        <div class="brand">Qoffa Smart</div>
+                        <div class="product-name">
+                            <div class="product-fr">${product.name_fr} <span class="unit-badge">${product.unit}</span></div>
+                            <div class="product-ar">${product.name}</div>
+                        </div>
+                        <div class="price">
+                            ${product.price.toFixed(2)} <span>درهم</span>
+                            ${product.originalPrice ? `<del>${product.originalPrice.toFixed(2)}</del>` : ''}
+                        </div>
+                        <button class="add-to-cart" onclick="event.stopPropagation(); addToCart(${product.id})">
+                            <i class="fas fa-shopping-cart"></i> أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderFeaturedProducts() {
+            const container = document.getElementById('productsGrid');
+            if (!container) return;
+            
+            // عرض أول 8 منتجات
+            const featuredProducts = allProducts.slice(0, 8);
+            
+            if (featuredProducts.length === 0) {
+                container.innerHTML = `<div class="no-products">لا توجد منتجات حالياً</div>`;
+                return;
+            }
+            
+            container.innerHTML = featuredProducts.map(p => renderProductCard(p)).join('');
+        }
+
+        // ==================== CART FUNCTIONS ====================
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+            document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
+            localStorage.setItem('qoffaCart', JSON.stringify(cart));
+            updateCartSidebar();
+        }
+
+        function addToCart(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            
+            if (!product) {
+                showToast('لم يتم العثور على المنتج', 'error');
+                return;
+            }
+            
+            const existing = cart.find(item => item.id === productId);
+            
+            if (existing) {
+                existing.quantity += 1;
+                showToast(`تم زيادة كمية ${product.name}`, 'success');
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    name_fr: product.name_fr,
+                    price: product.price,
+                    quantity: 1,
+                    unit: product.unit,
+                    image: product.image,
+                    imageOriginal: product.imageOriginal
+                });
+                showToast(`✅ تم إضافة ${product.name} إلى السلة`, 'success');
+            }
+            
+            updateCartCount();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            localStorage.setItem('qoffaCart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartSidebar();
+            showToast('تم إزالة المنتج من السلة', 'warning');
+        }
+
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (!item) return;
+            
+            let newQuantity;
+            if (item.unit === 'كيلو' || item.unit === 'kg' || item.unit === 'كجم') {
+                newQuantity = (item.quantity || 1) + (change * 0.5);
+                newQuantity = Math.max(0.5, Math.round(newQuantity * 2) / 2);
+            } else {
+                newQuantity = (item.quantity || 1) + change;
+                newQuantity = Math.max(1, newQuantity);
+            }
+            
+            if (typeof change === 'number' && Math.abs(change) < 1) {
+                // Direct value assignment
+                newQuantity = change;
+                if (newQuantity < (item.unit === 'كيلو' || item.unit === 'kg' || item.unit === 'كجم' ? 0.5 : 1)) {
+                    removeFromCart(productId);
+                    return;
+                }
+            }
+            
+            item.quantity = newQuantity;
+            localStorage.setItem('qoffaCart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartSidebar();
+        }
+
+        function increaseQuantity(productId) {
+            updateQuantity(productId, 1);
+        }
+
+        function decreaseQuantity(productId) {
+            updateQuantity(productId, -1);
+        }
+
+        function clearCart() {
+            if (cart.length === 0) {
+                showToast('السلة فارغة بالفعل', 'warning');
+                return;
+            }
+            cart = [];
+            updateCartCount();
+            showToast('تم حذف جميع المنتجات من السلة', 'success');
+        }
+
+        function updateCartSidebar() {
+            const container = document.getElementById('cartItems');
+            const totalEl = document.getElementById('cartTotalPrice');
+            const weightText = document.getElementById('sidebarWeightText');
+            const weightMsg = document.getElementById('sidebarWeightMsg');
+            
+            if (!container) return;
+            
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-cart fa-3x"></i>
+                        <p>السلة فارغة</p>
+                        <a href="products.html" class="btn btn-primary">تصفح المنتجات</a>
+                    </div>
+                `;
+                if (totalEl) totalEl.textContent = '0.00 درهم';
+                if (weightText) weightText.textContent = 'الوزن الإجمالي: 0 كجم';
+                if (weightMsg) weightMsg.style.display = 'none';
+                return;
+            }
+            
+            let html = '';
+            let total = 0;
+            let totalWeight = 0;
+            
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                if (item.unit === 'كيلو' || item.unit === 'kg' || item.unit === 'كجم') {
+                    totalWeight += (item.quantity || 0);
+                } else {
+                    totalWeight += (item.quantity || 0) * 0.5;
+                }
+                
+                const unit = item.unit || 'كجم';
+                
+                html += `
+                    <div class="cart-item">
+                        <img src="${item.image || 'https://via.placeholder.com/80'}" 
+                             alt="${item.name}" 
+                             class="cart-item-img" 
+                             onerror="handleImageError(this)">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name || item.name_fr}</div>
+                            <div class="cart-item-price">${item.price.toFixed(2)} درهم</div>
+                            <div class="cart-item-quantity-controls">
+                                <button class="qty-btn qty-minus" onclick="event.stopPropagation(); decreaseQuantity(${item.id})" title="تقليل">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" class="qty-input" value="${item.quantity}" 
+                                       onchange="updateQuantity(${item.id}, parseInt(this.value))" 
+                                       min="1" max="100">
+                                <span class="qty-unit">${unit}</span>
+                                <button class="qty-btn qty-plus" onclick="event.stopPropagation(); increaseQuantity(${item.id})" title="زيادة">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <button class="cart-item-remove" onclick="removeFromCart(${item.id})" title="حذف">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            if (totalEl) totalEl.textContent = total.toFixed(2) + ' درهم';
+            
+            if (weightText) {
+                weightText.textContent = `الوزن الإجمالي: ${totalWeight.toFixed(1)} كجم`;
+            }
+            
+            // Update progress bar
+            const progressFill = document.getElementById('weightProgressFill');
+            if (progressFill) {
+                const progressPercent = Math.min((totalWeight / 7) * 100, 100);
+                progressFill.style.width = progressPercent + '%';
+                progressFill.style.backgroundColor = totalWeight >= 7 ? '#4CAF50' : '#FF9800';
+            }
+            
+            // Enable/Disable checkout button based on weight
+            const checkoutBtn = document.getElementById('cartCheckout');
+            if (checkoutBtn) {
+                if (totalWeight >= 7) {
+                    checkoutBtn.disabled = false;
+                    checkoutBtn.style.opacity = '1';
+                    checkoutBtn.style.cursor = 'pointer';
+                } else {
+                    checkoutBtn.disabled = true;
+                    checkoutBtn.style.opacity = '0.5';
+                    checkoutBtn.style.cursor = 'not-allowed';
+                }
+            }
+            
+            if (weightMsg) {
+                weightMsg.style.display = totalWeight < 7 ? 'block' : 'none';
+            }
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cartSidebar');
+            if (sidebar) {
+                sidebar.classList.toggle('active');
+                if (sidebar.classList.contains('active')) {
+                    updateCartSidebar();
+                }
+            }
+        }
+
+        function goToCheckout() {
+            if (cart.length === 0) {
+                showToast('السلة فارغة! أضف بعض المنتجات أولاً', 'error');
+                return;
+            }
+            
+            const totalWeight = cart.reduce((sum, item) => {
+                if (item.unit === 'كيلو' || item.unit === 'kg' || item.unit === 'كجم') {
+                    return sum + (item.quantity || 0);
+                }
+                return sum + (item.quantity || 0) * 0.5;
+            }, 0);
+            
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            if (totalWeight < 7 || totalPrice < 150) {
+                if (totalWeight < 7 && totalPrice < 150) {
+                    showToast('يجب أن يكون الوزن 7 كجم والمجموع 150 درهم على الأقل', 'error');
+                } else if (totalWeight < 7) {
+                    showToast('يجب أن يكون الوزن الإجمالي 7 كجم على الأقل لتأكيد الطلب', 'error');
+                } else {
+                    showToast('يجب أن يكون المجموع 150 درهم على الأقل لتأكيد الطلب', 'error');
+                }
+                return;
+            }
+            
+            window.location.href = 'order.html';
+        }
+
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🚀 تهيئة الصفحة الرئيسية...');
+            
+            fetchProducts();
+            updateCartCount();
+            
+            // Header scroll effect
+            window.addEventListener('scroll', () => {
+                const header = document.getElementById('mainHeader');
+                if (header) {
+                    header.classList.toggle('scrolled', window.scrollY > 50);
+                }
+                
+                const backToTop = document.getElementById('backToTop');
+                if (backToTop) {
+                    backToTop.classList.toggle('visible', window.scrollY > 300);
+                }
+            });
+            
+            // Back to top button
+            document.getElementById('backToTop')?.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+            
+            // Mobile menu toggle
+            document.getElementById('mobileMenuBtn')?.addEventListener('click', () => {
+                document.getElementById('navMenu')?.classList.toggle('active');
+            });
+            
+            // Cart events
+            document.getElementById('cartBtn')?.addEventListener('click', toggleCart);
+            document.getElementById('cartClose')?.addEventListener('click', toggleCart);
+            document.getElementById('cartClearBtn')?.addEventListener('click', clearCart);
+            document.getElementById('cartCheckout')?.addEventListener('click', goToCheckout);
+            
+            // Close cart when clicking outside
+            document.addEventListener('click', (e) => {
+                const sidebar = document.getElementById('cartSidebar');
+                const cartBtn = document.getElementById('cartBtn');
+                
+                if (sidebar && sidebar.classList.contains('active')) {
+                    if (!sidebar.contains(e.target) && !cartBtn.contains(e.target)) {
+                        sidebar.classList.remove('active');
+                    }
+                }
+            });
+            
+            // Close mobile menu when clicking a link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    document.getElementById('navMenu')?.classList.remove('active');
+                });
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href === '#') return;
+                    
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+
+        // Expose functions globally
+        window.addToCart = addToCart;
+        window.removeFromCart = removeFromCart;
+        window.clearCart = clearCart;
+        window.handleImageError = handleImageError;
+        window.updateQuantity = updateQuantity;
+        window.increaseQuantity = increaseQuantity;
+        window.decreaseQuantity = decreaseQuantity;
+    </script>
+    
+    <script src="assets/js/last-order-tracker.js"></script>
+    <script src="assets/js/reorder-popup.js"></script>
+</body>
+</html>

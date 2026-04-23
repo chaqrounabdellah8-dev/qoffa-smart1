@@ -1,0 +1,382 @@
+═══════════════════════════════════════════════════════════════════════════════
+📋 دليل مفصل لدوال السلة (Cart Functions Manual)
+═══════════════════════════════════════════════════════════════════════════════
+
+═══════════════════════════════════════════════════════════════════════════════
+1️⃣ updateCartCount()
+═══════════════════════════════════════════════════════════════════════════════
+
+الغرض:
+- تحديث عدد المنتجات المعروض في الشريط العلوي الأيقونة 🛒
+
+الموقع:
+- assets/js/main.js - السطر 399
+
+الكود:
+```javascript
+function updateCartCount() {
+    const count = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    document.querySelectorAll('.cart-count').forEach(el => el.textContent = count);
+    localStorage.setItem('qoffaCart', JSON.stringify(cart));
+    updateCartSidebar();
+}
+```
+
+ماذا يفعل:
+1. يحسب إجمالي الكميات جميع المنتجات
+2. يعرضها في الـ badge (.cart-count)
+3. يحفظ السلة في localStorage
+4. ينادي updateCartSidebar() لتحديث السلة الجانبية
+
+الإدخالات:
+- لا توجد
+
+المخرجات:
+- تحديث العد على الإيقونة
+- حفظ في localStorage
+
+───────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+2️⃣ updateQuantity(productId, change)
+═══════════════════════════════════════════════════════════════════════════════
+
+الغرض:
+- تحديث كمية منتج معين (زيادة أو إنقاص)
+- دعم الزيادة بـ 0.5 كجم للمنتجات بالكيلو
+
+الموقع:
+- assets/js/main.js - السطر 410
+
+الكود:
+```javascript
+function updateQuantity(productId, change) {
+    const item = cart.find(item => item.id === productId);
+    if (!item) return;
+    
+    let newQuantity;
+    if (item.unit === 'كيلو' || item.unit === 'kg' || item.unit === 'كجم') {
+        newQuantity = (item.quantity || 1) + (change * 0.5);
+        newQuantity = Math.max(0.5, Math.round(newQuantity * 2) / 2);
+    } else {
+        newQuantity = (item.quantity || 1) + change;
+        newQuantity = Math.max(1, newQuantity);
+    }
+    
+    item.quantity = newQuantity;
+    localStorage.setItem('qoffaCart', JSON.stringify(cart));
+    updateCartCount();
+    updateCartSidebar();
+    updateWeightIndicator();
+}
+```
+
+ماذا يفعل:
+1. تبحث عن المنتج في السلة
+2. إذا كان بالكيلو: تزيد بـ 0.5 كجم
+3. إذا كان وحدة عادية: تزيد بـ 1
+4. تحفظ في localStorage
+5. تعيد تحديث العد والـ sidebar والوزن
+
+الإدخالات:
+- productId: رقم المنتج الفريد
+- change: رقم التغيير (+1, -1, أو أي رقم)
+
+المخرجات:
+- تحديث الكمية في السلة
+- حفظ في localStorage
+- تحديث العرض
+
+ملاحظات:
+⚠️ الحد الأدنى للكيلو = 0.5
+⚠️ الحد الأدنى للوحدات = 1
+
+───────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+3️⃣ addToCart(product)
+═══════════════════════════════════════════════════════════════════════════════
+
+الغرض:
+- إضافة منتج جديد للسلة أو زيادة الكمية إذا كان موجوداً
+
+الموقع:
+- assets/js/main.js - السطر 481
+
+الكود:
+```javascript
+function addToCart(product) {
+    const existing = cart.find(item => item.id === product.id);
+    
+    if (existing) {
+        existing.quantity = (existing.quantity || 1) + 1;
+    } else {
+        cart.push({ 
+            id: product.id,
+            name: product.name,
+            name_fr: product.name_fr,
+            price: product.price,
+            quantity: 1,
+            unit: product.unit || 'كجم',
+            image: cartImage
+        });
+    }
+    
+    localStorage.setItem('qoffaCart', JSON.stringify(cart));
+    updateCartCount();
+}
+```
+
+ماذا يفعل:
+1. تبحث عن المنتج في السلة
+2. إذا موجود: تزيد الكمية بـ 1 فقط (برغم من وحدة المنتج)
+3. إذا جديد: تضيفه مع جميع البيانات
+4. تحفظ في localStorage
+5. تحدث العد
+
+الإدخالات:
+- product: كائن المنتج { id, name, price, quantity, unit, image }
+
+المخرجات:
+- إضافة/تحديث في السلة
+- حفظ في localStorage
+
+⚠️ مشكلة محتملة:
+عند الإضافة الأولى للمنتج بالكيلو، يُضاف 1 كيلو (يجب أن يكون 0.5)
+الزيادة في الـ sidebar تعمل بـ 0.5 لكن الإضافة الأولى تعمل بـ 1
+
+───────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+4️⃣ removeFromCart(productId)
+═══════════════════════════════════════════════════════════════════════════════
+
+الغرض:
+- حذف منتج كامل من السلة
+
+الموقع:
+- assets/js/main.js - السطر 430
+
+الكود:
+```javascript
+function removeFromCart(productId) {
+    const item = cart.find(item => item.id === productId);
+    if (!item) return;
+    
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('qoffaCart', JSON.stringify(cart));
+    updateCartCount();
+    updateCartSidebar();
+    showToast(`تم إزالة ${item.name_fr || item.name} من السلة`, 'warning');
+}
+```
+
+ماذا يفعل:
+1. تبحث عن المنتج
+2. تزيله من السلة بالكامل
+3. تحفظ في localStorage
+4. تحدث العد والـ sidebar
+5. تعرض رسالة تأكيد
+
+الإدخالات:
+- productId: رقم المنتج
+
+المخرجات:
+- حذف المنتج من السلة
+- رسالة تأكيد
+
+───────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+5️⃣ clearCart()
+═══════════════════════════════════════════════════════════════════════════════
+
+الغرض:
+- حذف جميع المنتجات من السلة
+
+الموقع:
+- assets/js/main.js - السطر 440
+
+الكود:
+```javascript
+function clearCart() {
+    if (cart.length === 0) {
+        showToast('السلة فارغة بالفعل', 'info');
+        return;
+    }
+    
+    showConfirmDialog(..., () => {
+        cart = [];
+        localStorage.setItem('qoffaCart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartSidebar();
+        showToast('✅ تم حذف جميع المنتجات من السلة', 'success');
+    });
+}
+```
+
+ماذا يفعل:
+1. تتحقق من أن السلة ليست فارغة
+2. تطلب تأكيد من المستخدم
+3. تحذف جميع المنتجات
+4. تحفظ في localStorage
+5. تحدث العرض
+
+الإدخالات:
+- لا توجد
+
+المخرجات:
+- تفريغ السلة الكاملة
+- رسالة تأكيد
+
+───────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+6️⃣ calculateTotalWeight()
+═══════════════════════════════════════════════════════════════════════════════
+
+الغرض:
+- حساب الوزن الإجمالي للسلة
+
+الموقع:
+- assets/js/main.js - السطر 520
+
+الكود:
+```javascript
+function calculateTotalWeight() {
+    return cart.reduce((sum, item) => {
+        if (item.unit === 'كيلو' || item.unit === 'kg' || item.unit === 'كجم') {
+            return sum + (item.quantity || 0);
+        }
+        return sum + (item.quantity || 0) * 0.5;
+    }, 0);
+}
+```
+
+ماذا يفعل:
+1. تدقق على وحدة كل منتج
+2. للكيلو: تأخذ الوزن مباشرة
+3. للوحدات الأخرى: تضرب الكمية × 0.5
+
+الإدخالات:
+- لا توجد (تستخدم المتغير cart العام)
+
+المخرجات:
+- رقم عشري يمثل الوزن بالكيلو
+
+مثال:
+- تفاح (كجم) × 1.5 = 1.5 كجم
+- موز (وحدة) × 4 = 4 × 0.5 = 2 كجم
+- إجمالي = 3.5 كجم
+
+───────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+7️⃣ updateWeightIndicator()
+═══════════════════════════════════════════════════════════════════════════════
+
+الغرض:
+- تحديث مؤشر الوزن والسعر والزر
+
+الموقع:
+- assets/js/main.js - السطر 536
+
+الكود:
+```javascript
+function updateWeightIndicator() {
+    const totalWeight = calculateTotalWeight();
+    const totalPrice = cart.reduce((sum, item) => 
+        sum + (item.price * item.quantity), 0);
+    
+    const isPriceOk = totalPrice >= 150;
+    const isWeightOk = totalWeight >= 7;
+    
+    if (isWeightOk || isPriceOk) {
+        checkoutBtn.disabled = false;
+    } else {
+        checkoutBtn.disabled = true;
+    }
+    
+    // عرض الرسائل
+    if (weightMsg) {
+        weightMsg.style.display = (isWeightOk || isPriceOk) ? 'none' : 'flex';
+    }
+}
+```
+
+ماذا يفعل:
+1. تحسب الوزن الإجمالي
+2. تحسب السعر الإجمالي
+3. تتحقق من الشروط:
+   - الوزن >= 7 كجم ؟
+   - السعر >= 150 درهم ؟
+4. تفعل الزر إذا استوفى أحد الشروط
+5. تعرض/تخفي الرسائل
+
+الإدخالات:
+- لا توجد
+
+المخرجات:
+- تفعيل/تعطيل زر التسديد
+- عرض/إخفاء الرسائل
+
+الشروط:
+✓ إذا الوزن >= 7 أو السعر >= 150: زر مفعل
+✗ إذا كلاهما أقل: زر معطل
+
+───────────────────────────────────────────────────────────────────────────
+
+═══════════════════════════════════════════════════════════════════════════════
+8️⃣ updateCartSidebar()
+═══════════════════════════════════════════════════════════════════════════════
+
+الغرض:
+- تحديث عرض السلة الجانبية
+
+الموقع:
+- assets/js/main.js - السطر 578
+
+الكود:
+```javascript
+function updateCartSidebar() {
+    const sidebar = document.getElementById('cartItems');
+    
+    if (cart.length === 0) {
+        sidebar.innerHTML = '<div class="cart-empty">السلة فارغة</div>';
+        return;
+    }
+    
+    let html = '';
+    cart.forEach(item => {
+        html += `<div class="cart-item">
+            <img src="${item.image}" alt="${item.name}">
+            <div class="cart-item-info">
+                <div>${item.name_fr}</div>
+                <div class="cart-item-quantity">
+                    <button onclick="decreaseQuantity(${item.id})">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="increaseQuantity(${item.id})">+</button>
+                </div>
+            </div>
+        </div>`;
+    });
+    
+    sidebar.innerHTML = html;
+    updateWeightIndicator();
+}
+```
+
+ماذا يفعل:
+1. تفحص عدد المنتجات في السلة
+2. إذا فارغة: تعرض "السلة فارغة"
+3. إذا فيها منتجات: تبني HTML لكل منتج
+4. تعرض الاسم والسعر والصورة وأزرار التحكم
+5. تنادي updateWeightIndicator() لتحديث مؤشر الوزن
+
+الإدخالات:
+- لا توجد
+
+المخرجات:
+- تحديث عرض السلة الكاملة
+
+═══════════════════════════════════════════════════════════════════════════════
